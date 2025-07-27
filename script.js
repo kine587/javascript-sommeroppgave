@@ -40,7 +40,22 @@ console.log(createOrder("lars", "unknown"));
 const usedPasswords = ["password123!", "helloWorld!", "qwerty&"];
 
 function checkPasswordStrength(password) {
-  const symbols = ["&", "%", "!", "?"];
+  let count = 0;
+
+  if (password.includes("!")) {
+    ++count;
+  }
+  if (password.includes("%")) {
+    ++count;
+  }
+  if (password.includes("&")) {
+    ++count;
+  }
+  if (password.includes("?")) {
+    ++count;
+  }
+  return count;
+  /* const symbols = ["&", "%", "!", "?"];
   const foundSymbols = symbols.filter((symbol) => password.includes(symbol));
   if (usedPasswords.includes(password)) {
     return "This password has been used before. Please choose a new one.";
@@ -50,7 +65,7 @@ function checkPasswordStrength(password) {
     return "strong";
   } else {
     return "medium";
-  }
+  } */
 }
 console.log(checkPasswordStrength("password123!"));
 console.log(checkPasswordStrength("abc"));
